@@ -1,1 +1,1 @@
-# A-Discontinuous-Galerkin-program-for-the-compressible-Euler-equations
+# A Discontinuous Galerkin program for the compressible Euler equations
