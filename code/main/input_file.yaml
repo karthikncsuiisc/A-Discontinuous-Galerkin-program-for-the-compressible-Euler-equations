@@ -1,0 +1,164 @@
+# *****************************************************************************
+#                          My own CONFIGURATION FILE
+# *****************************************************************************
+#   Comments section: more options to be included in future
+#					  The format of the file is as follows
+#					  Start section1
+#					  disc_typ1(no spaces) <value>	
+#					  Start section1
+#					  disc_typ2 <value>	
+#					  Start section1
+#					  disc_typ3 <value>	
+#					  .......
+#					  .......
+# -----------------------------------------------------------------------------
+#       Configuration Option # = 0
+#       Option Value = 0 - ODE \Not yet implemented
+#                      1 - 1D
+#                      2 - 2D  
+#                      3 - 3D  \Not yet implemented
+#-------------------------------------------------------------------------------
+start spacedim
+0spacedim 2
+#-------------------------------------------------------------------------------
+#      Geometry and mesh information(only for 1D):
+#       Configuration Option # 1 /Left end coordinate				
+#       Configuration Option # 2 /Right end coordinate
+#       Configuration Option # 3 /Number of elements6.283185307
+#-------------------------------------------------------------------------------
+start geom1d
+1leftcoord -10
+2righcoord 40
+3numelem 4000
+#-------------------------------------------------------------------------------
+#       Geometry and mesh information for 2D
+#		Option Value = 4 - number of mesh files
+#		Option Value = 5 - Meshfile names
+#-------------------------------------------------------------------------------
+start geom2d
+4meshfiles 1
+5filenames 1feflo.domn.cylinder.coarse 2feflo.domn.cylinder.medium 3feflo.domn.cylinder.fine 4feflo.domn.sphere.vfine feflo.domn.naca0012 0feflo.domn.bump
+#-------------------------------------------------------------------------------		
+#	   Physics type and Discretization
+#      	Physics type           # 10= 0 Linear advection equation(implemented for both 1D and 2D)
+#       						     1 Euler equations (implemented for 1D and 2D)			
+#							         2  Advection-Burger Equation ut+(a*u+b*u^2/2)x=c*uxx
+#      	                       # 101 Advection velocity(ax,ay)
+#	------For Euler equations-------
+#		Reference values			
+#	    Gama Value             # 102
+#		Density				   # 103(rhoref)
+#		Velocity  			   # 104(vref)
+#		Mach number			   # 105(Mach)
+#		Angle of attack		   # 106(alpa in degrees)
+#	------For Advection burger equation-------
+#		Coefficient values	   # 107 a b c in ut+(a*u+b*u^2/2)x=c*uxx
+#--------------------------------------------------------------------------------
+start phy_type
+10phy   1
+101adv  1.0 0.0
+102gam  1.4
+103rho  1.0
+104vr   1.0 
+105Mr   0.38
+106alp  0
+107bur  1 1 1.5e-5
+#--------------------------------------------------------------------------------
+#	    Discretization type  # 11= 1 Continous Galerkin Finite Element /Not yet coded
+#								   2 Discontinous Galerkin Finite Element(DG)
+#	    Discretization order # 12= 0 constant(Finite volume)(p0)
+#       						   1 Linear(P1)
+#								   2 Quadratic(P2)
+#	    Reconstruction       # 13= 0 No reconstruction
+#							       1 Use reconstruction (Only for 1D and 2D P0)
+#		variables			 # 14= 0 Conserved variables (rho, rho*vel, rho*E)
+#								   1 Primitive Vairables (rho, vel, pres)
+#		Using Limiter		 # 15= 0 No limiter
+#							 	   1 Use limiter(only for oneD P0)
+#		Limiter type		 # 16= 0 minmod limiter
+#							 	   1 MC	limiter
+#	    Basis function type  # 17= 0 Lagrangian (not yet coded)
+#       						   1 Taylor Basis(For DG Methods)
+#								   2 Legendre Basis(For DG Methods)(not yet coded)
+#	    Flux Calculation     # 18= 0 Stegar Warming FVS Method(coded only for 1d euler)
+#       						   1 Van Leer FVS Method(coded only for 1d and 2d euler equation)
+#								   2 Godunov's Method(coded only for 1d euler)
+#		Hard limiter		 # 19    Limit the pressure value while calcualting the speed of sound(if pres<=0).
+#								 	 Change the value to small positive if you are facing convergence issues
+#								 	using P1 and P2 method or else it is required to use high negative values.
+#	    Diffusion discretization type
+#							 # 20= 0 Direct discontinous method
+#       						   1 BR2 Method
+#		Eta value for Br2 	 # 21  Value for the convergence
+#--------------------------------------------------------------------------------
+start disc
+11Disctyp   2
+12Discord   0
+13reconst   1
+14vrecons   1
+15limiter   0
+16limityp   1
+17basfunt   1
+18fluxtyp   1
+19hrdlmtr   -1e16
+20difftyp   1
+21etavbr2   1
+#--------------------------------------------------------------------------------
+#		Boundary Conditions (Implemented only for 1D for now)
+#      	 Left boundary       # 20= 0 Dirchilet
+#       						   1 Newmann
+#								   2 Periodic			
+#      	 Right boundary      # 21= 0 Same as that of left boundary
+#--------------------------------------------------------------------------------
+start bc
+20bcl 2
+21bcr 2
+#-------------------------------------------------------------------------------
+#		Study type and Solvers
+#		Study type
+#		Configuration Option # 30= 0 Steady State solution (psuedo time stepping used for flow equations)
+#								   1 Time Dependent Solution (Time accurate)
+#		If steady state
+#		Configuration Option # 31= 0 Static steady state 
+#								   1 Frequency Domain    /Not coded yet
+#		 						   2 Eigen Frequency	 /Not coded yet
+#		If Time Dependent discretization
+#		Configuration Option # 32= 0 Explicit
+#								   1 Implicit /Not coded yet
+#		 
+#       Start and end time
+#		 Configuration Option # 33 Start time
+#		 Configuration Option # 34 End time
+#		 Configuration Option # 35 Manual time step
+#
+#       Calculate based on CFL(used for both steady state and time dependent problem)
+#		 Configuration Option # 36: 0 Dont Use
+#									1 Use 
+#		 Configuration Option # 37: CFL value(for both time dependent and stead state)
+# 
+#		Time dependent method
+#		 Configuration Option # 38: 1 Forward Euler
+#                                   2 Two stage TVD Range Kutta
+#                                   3 Three stage TVD Range Kutta
+#
+#		Maximum Number of iterations for steady state
+#		 Configuration Option # 39: Maximum number of iterations
+#		 Configuration Option # 40: Toleance Value for termination
+#
+#		Time step option for psuedo time stepping used in stead state solver
+#		 Configuration Option # 41: 0 Local time stepping
+#                                   1 Glocal time stepping(min(local time step).Same as time accurate but solving for steady state solution)
+# -----------------------------------------------------------------------------
+start study
+30studty  0
+31stedty  0
+32tmddis  0
+33strtti  0
+34endtim  30
+35timstp  0.0001
+36CFLuse  1
+37CFLval  0.2
+38rkmthd  3
+39mxiter  2000000
+40tolera  1e-8
+41tstpop  1

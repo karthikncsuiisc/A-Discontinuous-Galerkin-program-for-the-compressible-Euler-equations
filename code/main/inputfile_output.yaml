@@ -1,0 +1,11 @@
+#--------Space Dimension-------- 
+Two dimensinal
+#--------Physics type and Discretization--------
+Physics type :Euler Equations
+Discretization type :Discontinous Galerkin Finite Element(DG)
+Discretization order :Constant(Finite volume, P0)
+Reconstruction :Used
+Basis function type :Taylor Basis(For DG Methods)
+#--------Study type and Solvers--------
+Study type :Steady State solution
+Analysis type :Static steady state

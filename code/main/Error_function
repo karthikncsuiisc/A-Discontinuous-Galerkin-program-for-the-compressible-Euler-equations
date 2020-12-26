@@ -1,0 +1,15 @@
+1feflo.domn.cylinder.coarse 0.0883883  0.101512 Dicreti P0 Recons 1 Lim 0 Rel_tol 1e-06
+1feflo.domn.cylinder.coarse 0.0883883  0.0718548 Dicreti P0 Recons 0 Lim 0 Rel_tol 1e-06
+2feflo.domn.cylinder.medium 0.0441942  0.0591198 Dicreti P0 Recons 0 Lim 0 Rel_tol 1e-06
+1feflo.domn.cylinder.coarse 0.0883883  0.0494614 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-06
+1feflo.domn.cylinder.coarse 0.0883883  0.0958744 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-06
+1feflo.domn.cylinder.coarse 0.0883883  0.0956275 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-06
+1feflo.domn.cylinder.coarse 0.0883883  0.102108 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-06
+1feflo.domn.cylinder.coarse 0.0883883  0.0986953 Dicreti P1 Recons 0 Lim 0 Rel_tol 0.001
+2feflo.domn.cylinder.medium 0.0441942  0.0435393 Dicreti P1 Recons 0 Lim 0 Rel_tol 0.001
+1feflo.domn.cylinder.coarse 0.0883883  0.102109 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-08
+2feflo.domn.cylinder.medium 0.0441942  0.0486164 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-08
+1feflo.domn.cylinder.coarse 0.0883883  0.102109 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-08
+2feflo.domn.cylinder.medium 0.0441942  0.0486164 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-08
+3feflo.domn.cylinder.fine 0.0220971  0.0209201 Dicreti P1 Recons 0 Lim 0 Rel_tol 1e-08
+1feflo.domn.cylinder.coarse 0.0883883  0.101621 Dicreti P0 Recons 1 Lim 0 Rel_tol 1e-08
